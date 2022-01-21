@@ -13,6 +13,15 @@ let lastY = 0;
 function draw(event) {
   if(!isDrawing) return; //if not drawing, dont log mouse movement
   console.log(event);
+  ctx.beginPath();
+  //start from here
+  ctx.moveTo(lastX, lastY);
+  //goes to here
+  ctx.lineTo(event.offsetX, event.offsetY);
+  ctx.stroke();
+  // lastX = event.offsetX;
+  // lastY = event.offsetY;
+  [lastX, lastY] = [event.offsetX, event.offsetY];
 }
 
 canvas.addEventListener('mousemove', draw);
